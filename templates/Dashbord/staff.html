@@ -1,0 +1,41 @@
+{% extends 'partials/base.html' %}
+{% block title%} Dashbord-staff {% endblock %}
+
+{% block content %}
+<main class="app-main"> <!--begin::App Content Header-->
+    <div class="app-content-header"> <!--begin::Container-->
+       
+        <main class="app-main"> <!--begin::App Content Header-->
+            <div class="app-content-header"> <!--begin::Container-->
+                <!--end::Container-->
+            </div> <!--end::App Content Header--> <!--begin::App Content-->
+            <div class="app-content"> <!--begin::Container-->
+                <div class="card offset-3">
+                    <h5 class="card-header">Staff</h5>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Detail</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for worker in workers %}
+                                <tr>
+                                    <th scope="row"><a href="{% url 'Dashbord-staff-detail' worker.id %}" class="btn btn-info btn-sm">view</a></th>
+                                    <td>{{worker.username}}</td>
+                                    <td>{{worker.email}}</td>
+                                    <td>{{worker.profile.phone}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+</main>
+{% endblock %}

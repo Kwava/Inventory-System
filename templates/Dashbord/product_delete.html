@@ -1,0 +1,23 @@
+{% extends 'partials/base.html' %}
+{% block title%} Dashbord-index {% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3 ">
+      <div class="border  bg-white p-3">
+        <h4>Suprimer: ({{product.name}})</h4>
+        <hr>
+        <div class="alert alert-danger">
+          <h6 class="text-center">etes vous sur de vouloir suprimer {{product.name}} ?</h6>
+        </div>
+        <form method="POST" action="#">
+          {% csrf_token %}
+          <a href="{% url 'Dashbord-product' %}" class="btn btn-secondary">Annuler</a>
+          <button type="submit" class="btn btn-danger">Suprimer</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  {% endblock %}

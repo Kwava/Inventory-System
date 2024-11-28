@@ -1,0 +1,42 @@
+{% load crispy_forms_tags %}
+<main class="app-main"> <!--begin::App Content Header-->
+  <div class="app-content-header"> <!--begin::Container-->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 ">
+          <div class="border p-3 bg-white">
+            <h4>Order Request</h4>
+            <hr>
+            <form method="POST" action="#" class="needs-validation" novalidate>
+             
+              <br>
+              <button type="submit" class="btn btn-success form-control">Save</button>
+            </form>
+          </div>
+        </div>
+        <div class="card col-md-8">
+          <h5 class="card-header">Orders Records</h5>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in orders %}
+                {% if order.staff == user %}
+                <tr>
+                  <td>{{order.product.name}}</td>
+                  <td>{{order.product.category}}</td>
+                  <td>{{order.order_quantity}}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>

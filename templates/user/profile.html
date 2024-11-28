@@ -1,0 +1,52 @@
+{% extends 'partials/base.html' %}
+{% block title%} Dashbord-profile {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-6 offset-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <span class="h4">profile information <a href="{% url 'Dashbord-staff' %}"
+                        class="btn btn-secondary btn-sm float-end mx-1">Dashbord</a>
+                            <a href="{% url 'profile-update' %}"
+                            class="btn btn-warning btn-sm float-end mx-1">Editer</a>
+                         </span> 
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            
+                            <table class="table bg-white table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Name</th>
+                                        <td>{{user.username}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Adress</th>
+                                        <td>{{user.profile.adress}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email
+                                        <td>{{user.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Phone</th>
+                                        <td>{{user.profile.phone}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{user.profile.image.url}}" alt="profile image" class="img-thumbnail border-black">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

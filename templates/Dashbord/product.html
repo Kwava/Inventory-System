@@ -1,0 +1,78 @@
+{% extends 'partials/base.html' %}
+{% block title%} Dashbord-product {% endblock %}
+
+{% block content%}
+<main class="app-main"> <!--begin::App Content Header-->
+  <div class="app-content-header"> <!--begin::Container-->
+    {% include 'partials/topbar.html' %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 ">
+          {% for message in messages %}
+
+          {% if message %}
+          <div class="alert alert-{{message.tags}}">
+            {{message}}
+          </div>
+          {% endif %}
+
+          {% endfor %}
+          <div class="border p-3 bg-white">
+            <h4>Add Product</h4>
+            <hr>
+            <form method="POST" action="#" class="needs-validation" novalidate>
+              {% csrf_token %}
+              {{ Form }}
+              <br>
+              <button type="submit" class="btn btn-success form-control">Save</button>
+            </form>
+          </div>
+        </div>
+        {% if product %}
+        <div class="col-md-9">
+          <div class="card ">
+            <h6 class="card-header">PRODUCTS </h6>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">quantity</th>
+                    <th scope="col" class="text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for product in product %}
+                  <tr>
+                    <th scope="row"></th>
+                    <td >{{product.name}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td><a href="{% url 'update-product' product.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                      <a href="{% url 'delete-product' product.id %}" class="btn btn-danger btn-sm">Suprimer</a>
+                    </td>
+                  </tr>
+                  {% endfor%}
+                </tbody>
+              </table>
+              {% else%}
+              <div class="col-lg-5 ">
+                <div class="border p-3 bg-white">
+                  <div class="alert alert-warning">
+                    <h6 class="text-center">ACUN PRODUIT ENREGISTRE !</h6>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end::Container-->
+      </div>
+    </div>
+    <!--end::App Content Header--> <!--begin::App Content-->
+    <div class="app-content"> <!--begin::Container-->
+
+      {% endblock %}

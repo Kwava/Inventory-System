@@ -1,0 +1,50 @@
+{% extends 'partials/base.html' %}
+{% block title%} Dashbord-staff {% endblock %}
+
+{% block content %}
+<main class="app-main"> <!--begin::App Content Header-->
+    <div class="app-content-header"> <!--begin::Container-->
+        <div class="container">
+            <div class="row my-4">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-8 offset-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="h4">Detail Profile </span> 
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                   
+                                    <table class="table bg-white table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Name</th>
+                                                <td>{{workers.username}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Adress</th>
+                                                <td>{{workers.profile.adress}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Email
+                                                <td>{{workers.email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Phone</th>
+                                                <td>{{workers.profile.phone}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="{{workers.profile.image.url}}" alt="profile image" class="img-thumbnail border-black">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
